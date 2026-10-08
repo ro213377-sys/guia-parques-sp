@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Parques de São Paulo — Início</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="pagina-grade">
+
+  <header class="cabecalho">
+    <div class="identidade">
+      <a href="index.html">🌳 Guia de Parques SP</a>
+    </div>
+    <nav aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="#locais">Locais</a></li>
+        <li><a href="detalhe.html#eventos">Eventos</a></li>
+        <li><a href="#rodape">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="lateral">
+    <nav aria-label="Categorias de locais">
+      <h2>Categorias</h2>
+      <ul>
+        <li><a href="#locais">Parques</a></li>
+        <li><a href="#">Museus</a></li>
+        <li><a href="#">Teatros</a></li>
+        <li><a href="#">Eventos</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section class="hero" id="topo">
+      <h1>Conheça os Parques da Cidade de São Paulo</h1>
+      <p>
+        Um guia colaborativo com os principais parques, praças e áreas verdes
+        da capital paulista — horários, comodidades e a programação de
+        eventos de cada local.
+      </p>
+      <a class="botao" href="#locais">Ver locais em destaque</a>
+    </section>
+
+    <section class="cards" id="locais" aria-labelledby="titulo-destaques">
+      <h2 id="titulo-destaques">Locais em destaque</h2>
+      <div class="grade-cards">
+
+        <article class="card">
+          <a href="detalhe.html">
+            <h3>Parque do Carmo</h3>
+            <p>Itaquera — o segundo maior parque urbano de São Paulo, com o Bosque das Cerejeiras.</p>
+            <span class="ver-mais">Ver detalhes</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>Parque Ibirapuera</h3>
+          <p>Vila Mariana — o parque mais visitado da cidade, com museus e pistas de caminhada.</p>
+          <a href="#">Ver detalhes</a>
+        </article>
+
+        <article class="card">
+          <h3>Parque Villa-Lobos</h3>
+          <p>Alto de Pinheiros — grandes áreas verdes às margens do rio Pinheiros.</p>
+          <a href="#">Ver detalhes</a>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape" id="rodape">
+    <nav class="menu-vertical" aria-label="Links do rodapé">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="#locais">Locais em destaque</a></li>
+        <li><a href="detalhe.html">Parque do Carmo</a></li>
+      </ul>
+    </nav>
+    <p>&copy; 2026 Guia de Parques de São Paulo.</p>
+  </footer>
+
+</body>
+</html>

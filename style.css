@@ -1,0 +1,358 @@
+/* ===========================================================
+   Guia de Parques de São Paulo — Folha de estilos externa
+   =========================================================== */
+
+:root {
+  --azul: #2f6fed;
+  --azul-escuro: #1d4fbf;
+  --azul-claro: #eaf1fd;
+  --texto: #26303d;
+  --texto-claro: #6b7685;
+  --borda: #e7edf5;
+  --fundo-pagina: #eef3fb;
+  --fonte-titulo: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --fonte-corpo: 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--fonte-corpo);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--texto);
+  background-color: var(--fundo-pagina);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===================== Estados de link (usados em todo o site) ===================== */
+a:link { color: var(--azul); text-decoration: none; border-bottom: 1px solid transparent; }
+a:visited { color: #6b4f8f; }
+a:hover { color: var(--azul-escuro); border-bottom-color: var(--azul-escuro); }
+a:focus { outline: 2px solid var(--azul); outline-offset: 3px; }
+
+/* ===================== Cabeçalho (Flexbox: identidade à esquerda, menu à direita) ===================== */
+header.cabecalho {
+  display: flex;
+  flex-direction: column;      /* base (celular): identidade em cima, menu embaixo */
+  align-items: flex-start;
+  gap: 0.6rem;
+  background-color: #ffffff;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 12px rgba(47, 111, 237, 0.08);
+}
+
+header.cabecalho .identidade a {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--azul-escuro);
+  border-bottom: none;
+}
+
+header.cabecalho nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+header.cabecalho nav a {
+  display: block;
+  padding: 0.5rem 0.8rem;
+  color: var(--texto-claro);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+}
+
+header.cabecalho nav a:visited { color: var(--texto-claro); }
+header.cabecalho nav a:hover { color: var(--azul); border-bottom-color: var(--azul); }
+header.cabecalho nav a:focus { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+/* ===================== Lateral (aside de categorias — só na página inicial) ===================== */
+aside.lateral {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--borda);   /* base: faixa abaixo do cabeçalho */
+  padding: 1rem 1.2rem;
+}
+
+aside.lateral h2 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--texto-claro);
+  margin-bottom: 0.9rem;
+}
+
+aside.lateral ul {
+  list-style-type: square;
+  padding-left: 1.1rem;
+  display: flex;               /* base: categorias em linha, quebrando quando faltar espaço */
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+}
+
+aside.lateral li::marker { color: var(--azul); }
+
+aside.lateral a {
+  color: var(--texto);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+aside.lateral a:visited { color: var(--texto); }
+aside.lateral a:hover { color: var(--azul); }
+aside.lateral a:focus { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+/* ===================== Grade da página inicial (index.html) =====================
+   Base (celular): uma coluna só. minmax(0, 1fr) impede que conteúdo largo empurre a página. */
+body.pagina-grade {
+  display: grid;
+  grid-template-areas:
+    "cabecalho"
+    "lateral"
+    "conteudo"
+    "rodape";
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
+
+body.pagina-grade > header.cabecalho { grid-area: cabecalho; }
+body.pagina-grade > aside.lateral    { grid-area: lateral; }
+body.pagina-grade > main             { grid-area: conteudo; }
+body.pagina-grade > footer.rodape    { grid-area: rodape; }
+
+/* ===================== Hero e cards (index.html) ===================== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 45vh;
+  padding: 2.5rem 1.5rem;
+  background: radial-gradient(circle at top, #f5f9ff 0%, var(--fundo-pagina) 70%);
+}
+
+.hero h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.9rem;
+  color: var(--azul-escuro);
+  margin-bottom: 0.9rem;
+}
+
+.hero p {
+  max-width: 560px;
+  color: var(--texto-claro);
+  margin-bottom: 1.4rem;
+}
+
+.botao {
+  display: inline-block;
+  background-color: var(--azul);
+  color: #ffffff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.botao:link, .botao:visited { color: #ffffff; }   /* a:link (mais específico) deixava o texto azul sobre azul */
+.botao:hover { background-color: var(--azul-escuro); color: #ffffff; }
+.botao:focus { outline: 2px solid var(--azul-escuro); outline-offset: 3px; }
+
+.cards { padding: 1.5rem 1rem 2rem; }
+
+.cards h2 {
+  font-family: var(--fonte-titulo);
+  color: var(--azul);
+  font-size: 1.25rem;
+  margin-bottom: 1.2rem;
+}
+
+/* INTRÍNSECA: o número de colunas de cards segue o espaço disponível.
+   min(100%, 15rem) garante que um card nunca seja mais largo que a tela. */
+.grade-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.3rem 1.4rem;
+  box-shadow: 0 4px 16px rgba(47, 111, 237, 0.08);
+}
+
+.card h3 { color: var(--azul-escuro); margin-bottom: 0.4rem; font-size: 1.05rem; }
+.card p { color: var(--texto-claro); font-size: 0.9rem; margin-bottom: 0.8rem; }
+.card a { font-weight: 600; }
+
+/* Card com página: o <a> envolve o conteúdo e ocupa o card inteiro (área de clique = card) */
+.card > a {
+  display: block;
+  margin: -1.3rem -1.4rem;
+  padding: 1.3rem 1.4rem;
+  border-radius: 12px;
+  border-bottom: none;
+  font-weight: 400;
+}
+.card > a:link, .card > a:visited { color: inherit; }
+.card > a:hover { background-color: var(--azul-claro); border-bottom: none; }
+.card > a:focus { outline-offset: -2px; }
+.card .ver-mais { color: var(--azul); font-weight: 600; }
+.card > a:hover .ver-mais { text-decoration: underline; }
+
+/* ===================== Conteúdo de detalhe.html ===================== */
+main.conteudo-detalhe {
+  max-width: 780px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+main.conteudo-detalhe section {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 20px rgba(47, 111, 237, 0.08);
+}
+
+main.conteudo-detalhe section h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--azul);
+  margin-bottom: 0.9rem;
+}
+
+.legenda { font-size: 0.82rem; color: var(--texto-claro); margin-bottom: 1rem; margin-top: -0.4rem; }
+
+#sobre-local p { font-size: 0.95rem; margin-bottom: 1rem; }
+
+figure { margin: 0 0 1rem 0; }
+figure img { width: 100%; max-height: 280px; object-fit: cover; border-radius: 10px; display: block; }
+figcaption { font-size: 0.8rem; color: var(--texto-claro); font-style: italic; margin-top: 0.4rem; text-align: center; }
+
+.citacao {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  background-color: var(--azul-claro);
+  border-left: 3px solid var(--azul);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+}
+.citacao p { font-style: italic; font-size: 0.88rem; color: var(--azul-escuro); }
+
+/* ===================== Tabelas =====================
+   DELIBERADA: no celular a tabela vira lista de "fichas" (cada linha um bloco);
+   os rótulos das colunas vêm de ::before (só CSS). A partir do breakpoint volta a ser tabela. */
+table { width: 100%; font-size: 0.88rem; }
+table, tbody, tr, td { display: block; }
+thead { position: absolute; left: -9999px; }   /* some da tela, continua para leitor de tela */
+caption { display: block; text-align: left; margin-top: 0.7rem; font-size: 0.78rem; color: var(--texto-claro); font-style: italic; caption-side: bottom; }
+tbody tr { padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--borda); overflow-wrap: anywhere; }
+tbody td { padding: 0.15rem 0; }
+tbody td:first-child { font-weight: 700; color: var(--azul-escuro); }
+tbody td + td::before { display: block; font-size: 0.72rem; color: var(--texto-claro); font-weight: 400; }
+#informacoes td:nth-child(2)::before { content: "Detalhe"; }
+#informacoes td:nth-child(3)::before { content: "Observação"; }
+#eventos td:nth-child(2)::before { content: "Evento"; }
+#eventos td:nth-child(3)::before { content: "Horário"; }
+#eventos td:nth-child(4)::before { content: "Ingresso"; }
+tbody tr:nth-child(even) { background-color: #f6f9fe; }
+tbody tr:nth-child(odd) { background-color: #ffffff; }
+tbody tr:hover { background-color: var(--azul-claro); }
+tbody td.detalhe { color: var(--azul); font-weight: 600; }
+
+/* ===================== Listas (comodidades e contato) ===================== */
+.lista-comodidades {
+  list-style-type: square;
+  padding-left: 1.4rem;
+  columns: auto 14rem;   /* INTRÍNSECA: o número de colunas segue a largura (14rem por coluna) */
+  column-gap: 2rem;
+}
+.lista-comodidades li { font-size: 0.9rem; margin-bottom: 0.5rem; break-inside: avoid; }
+.lista-comodidades li::marker { color: var(--azul); font-size: 1rem; }
+
+.info-contato { list-style-type: none; font-size: 0.9rem; }
+.info-contato li { padding: 0.5rem 0; border-bottom: 1px dashed var(--borda); overflow-wrap: anywhere; }
+.info-contato li:last-child { border-bottom: none; }
+.info-contato .rotulo { font-weight: 600; display: block; }   /* base: rótulo em cima do valor */
+
+/* ===================== Rodapé ===================== */
+footer.rodape {
+  background-color: #ffffff;
+  border-top: 1px solid var(--borda);
+  padding: 1.4rem 1.2rem 1.2rem;
+}
+
+.menu-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.menu-vertical a { color: var(--texto-claro); font-size: 0.88rem; }
+.menu-vertical a:visited { color: var(--texto-claro); }
+.menu-vertical a:hover { color: var(--azul); }
+.menu-vertical a:focus { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+footer.rodape > p { font-size: 0.78rem; color: var(--texto-claro); text-align: center; }
+
+/* ===================== Ajustes para telas maiores (mobile-first: só min-width) =====================
+   Breakpoints escolhidos por observação (ver REGISTRO.md), não por tabela de aparelhos. */
+
+/* 30em (480px): tabelas voltam a ser tabelas e contato mostra rótulo + valor lado a lado.
+   Observado: a tabela de eventos como tabela estoura a partir de ~420px; 480px dá folga. */
+@media (min-width: 30em) {
+  footer.rodape { padding: 1.6rem 2rem 1.2rem; }
+  .cards { padding: 2rem 2.2rem 2.5rem; }
+  main.conteudo-detalhe { padding: 1.8rem 1.2rem; }
+  main.conteudo-detalhe section { padding: 1.6rem 1.8rem; }
+
+  table { display: table; border-collapse: collapse; border-radius: 8px; overflow: hidden; }
+  thead { display: table-header-group; position: static; }
+  tbody { display: table-row-group; }
+  tr { display: table-row; }
+  tbody tr { padding: 0; overflow-wrap: normal; }
+  tbody td { display: table-cell; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--borda); }
+  tbody td:first-child { font-weight: 400; color: inherit; }
+  tbody td + td::before { content: none !important; }
+  caption { display: table-caption; }
+  thead th { background-color: var(--azul); color: #ffffff; text-align: left; padding: 0.65rem 0.9rem; font-weight: 600; }
+  thead th:first-child { border-top-left-radius: 8px; }
+  thead th:last-child { border-top-right-radius: 8px; }
+
+  .info-contato .rotulo { display: inline-block; min-width: 90px; }
+}
+
+/* 40em (640px): cabeçalho em linha (identidade à esquerda, menu à direita).
+   Observado: o menu da home só cabe numa linha ao lado da identidade a partir de ~640px. */
+@media (min-width: 40em) {
+  header.cabecalho { flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 1rem 2rem; }
+}
+
+/* 50em (800px): lateral da home passa para o lado do conteúdo.
+   Observado: com a lateral (220px) ao lado, 2 cards de 15rem só cabem a partir de ~800px. */
+@media (min-width: 50em) {
+  body.pagina-grade {
+    grid-template-areas:
+      "cabecalho cabecalho"
+      "lateral   conteudo"
+      "rodape    rodape";
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+  aside.lateral { border-bottom: none; border-right: 1px solid var(--borda); padding: 1.6rem 1.2rem; }
+  aside.lateral ul { display: block; }
+  aside.lateral li { margin-bottom: 0.65rem; }
+}
