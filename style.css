@@ -38,10 +38,15 @@ header.cabecalho {
   display: flex;
   flex-direction: column;      /* base (celular): identidade em cima, menu embaixo */
   align-items: flex-start;
-  gap: 0.6rem;
+  gap: 0.4rem;
   background-color: #ffffff;
-  padding: 1rem 1.2rem;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 3px solid var(--azul);   /* separa o cabeçalho do resto da página */
   box-shadow: 0 2px 12px rgba(47, 111, 237, 0.08);
+}
+
+header.cabecalho .identidade {
+  flex-shrink: 0;              /* a identidade nunca é espremida pelo menu */
 }
 
 header.cabecalho .identidade a {
@@ -56,12 +61,13 @@ header.cabecalho nav ul {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 header.cabecalho nav a {
   display: block;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   color: var(--texto-claro);
   font-size: 0.9rem;
   font-weight: 600;
@@ -69,7 +75,7 @@ header.cabecalho nav a {
 }
 
 header.cabecalho nav a:visited { color: var(--texto-claro); }
-header.cabecalho nav a:hover { color: var(--azul); border-bottom-color: var(--azul); }
+header.cabecalho nav a:hover { color: var(--azul); background-color: var(--azul-claro); border-bottom-color: var(--azul); }
 header.cabecalho nav a:focus { outline: 2px solid var(--azul); outline-offset: 2px; }
 
 /* ===================== Lateral (aside de categorias — só na página inicial) ===================== */
@@ -339,7 +345,8 @@ footer.rodape > p { font-size: 0.78rem; color: var(--texto-claro); text-align: c
 /* 40em (640px): cabeçalho em linha (identidade à esquerda, menu à direita).
    Observado: o menu da home só cabe numa linha ao lado da identidade a partir de ~640px. */
 @media (min-width: 40em) {
-  header.cabecalho { flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 1rem 2rem; }
+  header.cabecalho { flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem 2rem; padding: 0.8rem 2rem; }
+  header.cabecalho nav ul { gap: 0.5rem; }
 }
 
 /* 50em (800px): lateral da home passa para o lado do conteúdo.
